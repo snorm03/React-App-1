@@ -17,16 +17,17 @@ export default function Sidebar({ initialMenuItems }) {
   //This involves adding a parameter and changing a class instance variable (props).
     //setMenuItems([item, ...menuItems])
     const addMenuItem = useCallback(() => {
-      const item = { title: newMenuItem }
-      setMenuItems([item, ...menuItems])
-      console.log("Added menu item")
-      setNewMenuItem("") 
-    }, [newMenuItem, menuItems])
+      if (newMenuItem.trim()) {
+        setMenuItems([newMenuItem, ...menuItems]);
+        console.log("Added menu item");
+        setNewMenuItem(""); 
+      }
+    }, [newMenuItem, menuItems]);
 
   // TODO: 4. Display ONLY the menu items that contain the filter element value
   // "term" in them. Each menu item should be an unordered list item wrapped in an unordered list (ul) element.
   let filteredItems = menuItems.filter(item => 
-    item.title.toLowerCase().includes(filter.toLowerCase())
+    item.toLowerCase().includes(filter.toLowerCase())
   );
 
   // TODO: 1 Render inside the outer div an unordered list of the menu items, with each string in the array
@@ -34,9 +35,9 @@ export default function Sidebar({ initialMenuItems }) {
   return (
     <div>
       <ul>
-        {filteredItems.map((item) => (
-          <li key={item.id}>
-            {item.title}
+        {filteredItems.map((item, index) => (
+          <li key={index}>
+            {item}
           </li>
         ))}
       </ul>
