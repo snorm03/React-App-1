@@ -7,16 +7,15 @@ import { useState, useCallback } from "react"
  */
 export default function Sidebar({ initialMenuItems }) {
   let [newMenuItem, setNewMenuItem] = useState("")
+  
   // TODO: 2 Using a state hook, maintain the current menu items as an array state.
   // let [menuItems, setMenuItems] = useState(initialMenuItems)
-
   let [menuItems, setMenuItems] = useState(initialMenuItems);
   let [filter, setFilter] = useState("")
 
   //TODO: 3. Add a new menu item to the correct variable associated with this class.
   //This involves adding a parameter and changing a class instance variable (props).
     //setMenuItems([item, ...menuItems])
-
     const addMenuItem = useCallback(() => {
       const item = { title: newMenuItem }
       setMenuItems([item, ...menuItems])
