@@ -2,6 +2,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 
 function App() {
+  
   const initialMenuItems=[
     'Albert Eggstein',
     'Attila the Hen',

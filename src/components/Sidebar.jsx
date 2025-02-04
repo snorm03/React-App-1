@@ -12,19 +12,17 @@ export default function Sidebar({ initialMenuItems }) {
 
   let [menuItems, setMenuItems] = useState(initialMenuItems);
   let [filter, setFilter] = useState("")
-  // Adds a single string passed in as parameter to the state element
-  // "menuItems" that holds the set of current menu items.
-  let addMenuItem = useCallback(() => {
-    setMenuItems((prevMenuItems) => [
-      { id: prevMenuItems.length, title: newMenuItem }, 
-      ...prevMenuItems
-    ]);
-    console.log("Added menu item")
-    setNewMenuItem("");
-  }, [newMenuItem]);
-    //   // TODO: 3. Add a new menu item to the correct variable associated with this class.
-    //   // This involves adding a parameter and changing a class instance variable (props).
-    //   setMenuItems([item, ...menuItems])
+
+  //TODO: 3. Add a new menu item to the correct variable associated with this class.
+  //This involves adding a parameter and changing a class instance variable (props).
+    //setMenuItems([item, ...menuItems])
+
+    const addMenuItem = useCallback(() => {
+      const item = { title: newMenuItem }
+      setMenuItems([item, ...menuItems])
+      console.log("Added menu item")
+      setNewMenuItem("") 
+    }, [newMenuItem, menuItems])
 
   // TODO: 4. Display ONLY the menu items that contain the filter element value
   // "term" in them. Each menu item should be an unordered list item wrapped in an unordered list (ul) element.
