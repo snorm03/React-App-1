@@ -26,9 +26,10 @@ export default function Sidebar({ initialMenuItems }) {
 
   // TODO: 4. Display ONLY the menu items that contain the filter element value
   // "term" in them. Each menu item should be an unordered list item wrapped in an unordered list (ul) element.
-  let filteredItems = menuItems.filter(item => 
-    item.toLowerCase().includes(filter.toLowerCase())
-  );
+  let filteredItems = menuItems.filter(item => {
+    const regex = new RegExp(filter, "i"); 
+    return regex.test(item);
+  });
 
   // TODO: 1 Render inside the outer div an unordered list of the menu items, with each string in the array
   // its own item.
